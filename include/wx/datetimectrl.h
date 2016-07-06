@@ -32,6 +32,8 @@ public:
     // Set/get the date or time (in the latter case, time part is ignored).
     virtual void SetValue(const wxDateTime& dt) = 0;
     virtual wxDateTime GetValue() const = 0;
+
+    virtual bool NeedsFocusRing() const { return true; }
 };
 
 #if defined(__WXMSW__) && !defined(__WXUNIVERSAL__)

@@ -57,6 +57,8 @@ public:
     // override wxItemContainer::IsSorted
     virtual bool IsSorted() const { return HasFlag(wxCB_SORT); }
 
+    virtual bool NeedsFocusRing() const { return true; }
+
 protected:
     // The generic implementation doesn't determine the height correctly and
     // doesn't account for the width of the arrow but does take into account

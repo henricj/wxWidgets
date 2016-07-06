@@ -17,6 +17,7 @@
     #include "wx/textctrl.h"
     #include "wx/combobox.h"
     #include "wx/radiobut.h"
+    #include "wx/button.h"
 #endif
 
 #ifdef __WXMAC__
@@ -1645,7 +1646,26 @@ void wxWidgetCocoaImpl::drawRect(void* rect, WXWidget slf, void *WXUNUSED(_cmd))
         // call super
         SEL _cmd = @selector(drawRect:);
         wxOSX_DrawRectHandlerPtr superimpl = (wxOSX_DrawRectHandlerPtr) [[slf superclass] instanceMethodForSelector:_cmd];
-        superimpl(slf, _cmd, *(NSRect*)rect);
+
+        wxWindow *peer = GetWXPeer();
+        bool hasFocus = peer->HasFocus();
+        if (hasFocus &&
+             peer->NeedsFocusRing()) {
+           superimpl(slf, _cmd, *(NSRect*)rect);
+
+           // Paint it again, without text, causing focus halo to be
+           // superimposed about all else
+           HIThemeBeginFocus( context, kHIThemeFocusRingOnly, NULL );
+           CGContextSetTextDrawingMode( context, kCGTextInvisible );
+           superimpl(slf, _cmd, *(NSRect*)rect);
+           HIThemeEndFocus( context );
+           
+           CGContextRestoreGState( context );
+           CGContextSaveGState( context );
+        }
+        else
+           superimpl(slf, _cmd, *(NSRect*)rect);
+
         CGContextRestoreGState( context );
         CGContextSaveGState( context );
     }

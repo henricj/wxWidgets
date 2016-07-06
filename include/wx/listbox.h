@@ -94,6 +94,8 @@ public:
     int HitTest(const wxPoint& point) const { return DoListHitTest(point); }
     int HitTest(int x, int y) const { return DoListHitTest(wxPoint(x, y)); }
 
+    virtual bool NeedsFocusRing() const { return true; }
+
 
 protected:
     virtual void DoSetFirstItem(int n) = 0;

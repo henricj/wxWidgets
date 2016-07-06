@@ -41,7 +41,9 @@ public:
 
     // returns the default button size for this platform
     static wxSize GetDefaultSize();
-
+#ifdef __WXMAC__
+    virtual bool NeedsFocusRing() const wxOVERRIDE { return true; }
+#endif
 protected:
     wxDECLARE_NO_COPY_CLASS(wxButtonBase);
 };

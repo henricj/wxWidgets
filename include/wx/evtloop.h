@@ -177,6 +177,16 @@ public:
     // set currently active (running) event loop
     static void SetActive(wxEventLoopBase* loop);
 
+#ifdef __WXMAC__
+#define __WX_EVTLOOP_BUSY_WAITING__
+    static bool GetBusyWaiting();
+
+    // If the argument is true, cause modal dialogs to busy-wait for events,
+    // which seems to be necessary to avoid hanging when other code is using
+    // the old Multiprocessing API
+    static void SetBusyWaiting(bool busyWaiting);
+#endif
+
 
 protected:
     // real implementation of Run()

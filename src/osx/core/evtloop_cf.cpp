@@ -243,7 +243,8 @@ int wxCFEventLoop::DoProcessEvents()
     }
     else
 #endif
-        return DispatchTimeout( m_isInsideYield ? 0 : 1000 );
+        return DispatchTimeout
+            (m_isInsideYield || wxEventLoopBase::GetBusyWaiting() ? 0 : 1000 );
 }
 
 bool wxCFEventLoop::Dispatch()

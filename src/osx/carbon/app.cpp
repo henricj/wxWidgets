@@ -259,16 +259,9 @@ short wxApp::MacHandleAEOApp(const WXEVENTREF WXUNUSED(event) , WXEVENTREF WXUNU
 
 short wxApp::MacHandleAEQuit(const WXEVENTREF WXUNUSED(event) , WXEVENTREF WXUNUSED(reply))
 {
-    wxCloseEvent event(wxEVT_QUERY_END_SESSION, wxID_ANY);
-    event.SetEventObject(this);
-    event.SetCanVeto(true);
-    ProcessEvent(event);
-    if ( !event.GetVeto() )
+    if ( OSXOnShouldTerminate() )
     {
-        wxCloseEvent event(wxEVT_END_SESSION, wxID_ANY);
-        event.SetEventObject(this);
-        event.SetCanVeto(false);
-        ProcessEvent(event);
+        OSXOnWillTerminate();
     }
     return noErr ;
 }

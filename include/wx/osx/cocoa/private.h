@@ -241,6 +241,8 @@ public :
 
     virtual bool ShowFullScreen(bool show, long style);
 
+    bool NotifyFullScreen( bool fullScreen ) { m_isFullScreen = fullScreen; }
+
     virtual void ShowWithoutActivating();
 
     virtual void RequestUserAttention(int flags);
@@ -267,6 +269,7 @@ protected :
     CGWindowLevel   m_macWindowLevel;
     WXWindow        m_macWindow;
     void *          m_macFullScreenData ;
+    bool            m_isFullScreen;
     DECLARE_DYNAMIC_CLASS_NO_COPY(wxNonOwnedWindowCocoaImpl)
 };
 

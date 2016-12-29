@@ -56,6 +56,7 @@ void wxEventLoopBase::SetActive(wxEventLoopBase* loop)
         wxTheApp->OnEventLoopEnter(loop);
 }
 
+#ifdef __WXMAC__
 static bool g_busyWaiting = false;
 
 /* static */
@@ -69,6 +70,7 @@ void wxEventLoopBase::SetBusyWaiting(bool busyWaiting)
 {
    g_busyWaiting = busyWaiting;
 }
+#endif
 
 int wxEventLoopBase::Run()
 {

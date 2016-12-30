@@ -716,7 +716,9 @@ wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_AUX1_DCLICK, wxMouseEvent);
 wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_AUX2_DOWN, wxMouseEvent);
 wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_AUX2_UP, wxMouseEvent);
 wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_AUX2_DCLICK, wxMouseEvent);
+#ifdef __WXMAC__
 wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_MAGNIFY, wxMouseEvent);
+#endif
 
     // Character input event type
 wxDECLARE_EXPORTED_EVENT(WXDLLIMPEXP_CORE, wxEVT_CHAR, wxKeyEvent);
@@ -1752,7 +1754,11 @@ public:
     bool Aux1DClick() const { return (m_eventType == wxEVT_AUX1_DCLICK); }
     bool Aux2DClick() const { return (m_eventType == wxEVT_AUX2_DCLICK); }
 
+#ifdef __WXMAC__
     bool Magnify() const { return (m_eventType == wxEVT_MAGNIFY); }
+#else
+    bool Magnify() const { return false; }
+#endif
 
     // True if a button is down and the mouse is moving
     bool Dragging() const
@@ -4223,7 +4229,15 @@ typedef void (wxEvtHandler::*wxClipboardTextEventFunction)(wxClipboardTextEvent&
 #define EVT_MOUSE_AUX2_DOWN(func) wx__DECLARE_EVT0(wxEVT_AUX2_DOWN, wxMouseEventHandler(func))
 #define EVT_MOUSE_AUX2_UP(func) wx__DECLARE_EVT0(wxEVT_AUX2_UP, wxMouseEventHandler(func))
 #define EVT_MOUSE_AUX2_DCLICK(func) wx__DECLARE_EVT0(wxEVT_AUX2_DCLICK, wxMouseEventHandler(func))
+#ifdef __WXMAC__
 #define EVT_MAGNIFY(func) wx__DECLARE_EVT0(wxEVT_MAGNIFY, wxMouseEventHandler(func))
+#endif
+
+#ifdef __WXMAC__
+#define MAC_ONLY( x ) x
+#else
+#define MAC_ONLY( x ) 
+#endif
 
 // All mouse events
 #define EVT_MOUSE_EVENTS(func) \
@@ -4246,7 +4260,9 @@ typedef void (wxEvtHandler::*wxClipboardTextEventFunction)(wxClipboardTextEvent&
     EVT_LEAVE_WINDOW(func) \
     EVT_ENTER_WINDOW(func) \
     EVT_MOUSEWHEEL(func) \
-    EVT_MAGNIFY(func)
+    MAC_ONLY( EVT_MAGNIFY(func) )
+
+
 
 // Scrolling from wxWindow (sent to wxScrolledWindow)
 #define EVT_SCROLLWIN_TOP(func) wx__DECLARE_EVT0(wxEVT_SCROLLWIN_TOP, wxScrollWinEventHandler(func))

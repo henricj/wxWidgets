@@ -93,9 +93,9 @@ public:
     // return the index of the item at this position or wxNOT_FOUND
     int HitTest(const wxPoint& point) const { return DoListHitTest(point); }
     int HitTest(int x, int y) const { return DoListHitTest(wxPoint(x, y)); }
-
+#ifdef __WXMAC__
     virtual bool NeedsFocusRing() const { return true; }
-
+#endif
 
 protected:
     virtual void DoSetFirstItem(int n) = 0;

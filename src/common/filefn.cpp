@@ -1062,6 +1062,11 @@ wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite)
         return false;
     }
 
+// This Audacity specific fixup should only be for Windows.
+#if !defined( __WINDOWS__ )
+  if ( wxRename (file1, file2) == 0 )
+    return true;
+#else 
     // Normal system call
     //
     // For explanation, see:  (warning...based mostly on observed behavior)
@@ -1071,13 +1076,14 @@ wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite)
   for (int i = 0; i < 2000; i++)
   {
     if ( wxRename (file1, file2) == 0 )
-	  return true;
+      return true;
     unsigned long doserrno;
     _get_doserrno(&doserrno);
     if (doserrno != ERROR_ACCESS_DENIED && (doserrno != ERROR_ALREADY_EXISTS || exists))
         break;
     wxMilliSleep(1);
   }
+#endif
 
   // Try to copy
   if (wxCopyFile(file1, file2, overwrite)) {

@@ -103,4 +103,7 @@
       <Value>$(wxIntRootDir)</Value>
     </BuildMacro>
   </ItemGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="wx_local.props" Condition="Exists('wx_local.props')" />
+  </ImportGroup>
 </Project>

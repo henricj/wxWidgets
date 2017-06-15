@@ -16,6 +16,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>wxDEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <EnableEnhancedInstructionSet Condition="'$(AudacityEnhancedInstructionSet)'!=''">$(AudacityEnhancedInstructionSet)</EnableEnhancedInstructionSet>
     </ClCompile>
   </ItemDefinitionGroup>
 </Project>

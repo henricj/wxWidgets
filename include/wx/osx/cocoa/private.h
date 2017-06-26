@@ -241,7 +241,7 @@ public :
 
     virtual bool ShowFullScreen(bool show, long style);
 
-    bool NotifyFullScreen( bool fullScreen ) { m_isFullScreen = fullScreen; }
+    void NotifyFullScreen( bool fullScreen ) { m_isFullScreen = fullScreen; }
 
     virtual void ShowWithoutActivating();
 

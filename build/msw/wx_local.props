@@ -17,6 +17,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>wxDEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnableEnhancedInstructionSet Condition="'$(AudacityEnhancedInstructionSet)'!=''">$(AudacityEnhancedInstructionSet)</EnableEnhancedInstructionSet>
+      <AdditionalOptions Condition="'$(ForceStaticRuntime)'=='true'">/MT</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
 </Project>

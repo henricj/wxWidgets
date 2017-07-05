@@ -1179,7 +1179,7 @@ wxRenameFile(const wxString& file1, const wxString& file2, bool overwrite)
         return false;
     }
 
-#if !defined(__WXWINCE__)
+#if !defined(__WXWINCE__) && defined(__WIN32__)
     // Normal system call
     //
     // For explanation, see:  (warning...based mostly on observed behavior)

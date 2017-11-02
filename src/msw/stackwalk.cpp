@@ -252,6 +252,15 @@ void wxStackWalker::WalkFrom(const CONTEXT *pCtx, size_t skip, size_t maxDepth)
     sf.AddrFrame.Mode      = AddrModeFlat;
 
     dwMachineType = IMAGE_FILE_MACHINE_I386;
+#elif  defined(_M_ARM64)
+    sf.AddrPC.Offset       = ctx.Pc;
+    sf.AddrPC.Mode         = AddrModeFlat;
+    sf.AddrStack.Offset    = ctx.Sp;
+    sf.AddrStack.Mode      = AddrModeFlat;
+    sf.AddrFrame.Offset    = ctx.Sp;
+    sf.AddrFrame.Mode      = AddrModeFlat;
+
+    dwMachineType = IMAGE_FILE_MACHINE_ARM64;
 #else
     #error "Need to initialize STACKFRAME on non x86"
 #endif // _M_IX86

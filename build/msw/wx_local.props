@@ -2,7 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IntDir>$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <OutDir>$(wxOutDir)</OutDir></PropertyGroup>
+    <OutDir>$(wxOutDir)</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <StringPooling>true</StringPooling>

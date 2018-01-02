@@ -58,7 +58,7 @@
     // is harmless and it's easier to suppress it than use different makefiles
     // for VC5 and 6 (which don't support /EHa at all) and VC7+ (which does
     // accept it but it seems to change nothing for it anyhow)
-    #if __VISUALC__ < 1900
+    #if __VISUALC__ < 2000
         #pragma warning(disable: 4535)
     #endif
 

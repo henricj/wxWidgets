@@ -84,11 +84,13 @@ extern EXCEPTION_POINTERS *wxGlobalSEInformation = NULL;
 // flag telling us whether the application wants to handle exceptions at all
 static bool gs_handleExceptions = false;
 
+#ifndef WXMAKINGDLL
 static void wxFatalExit()
 {
     // use the same exit code as abort()
     ::ExitProcess(3);
 }
+#endif // not a DLL
 
 unsigned long wxGlobalSEHandler(EXCEPTION_POINTERS *pExcPtrs)
 {

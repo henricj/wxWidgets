@@ -87,6 +87,9 @@ public:
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
+#if wxUSE_ACCESSIBILITY
+      virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
 #if wxUSE_MARKUP && wxOSX_USE_COCOA
@@ -111,6 +114,10 @@ public:
                              int align = wxDVR_DEFAULT_ALIGNMENT);
 
     virtual bool MacRender() wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewBitmapRenderer);
@@ -180,6 +187,10 @@ public:
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
 
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
+
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewIconTextRenderer);
 };
@@ -211,6 +222,10 @@ public:
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     bool m_allow3rdStateForUser;
@@ -265,6 +280,9 @@ public:
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewProgressRenderer);
@@ -288,6 +306,10 @@ public:
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewDateRenderer);

@@ -82,11 +82,14 @@ public:
     void EnableMarkup(bool enable = true);
 #endif // wxUSE_MARKUP && Cocoa
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
 
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
-                                  unsigned col);
+                                  unsigned col) wxOVERRIDE;
+#if wxUSE_ACCESSIBILITY
+      virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
 #if wxUSE_MARKUP && wxOSX_USE_COCOA
@@ -110,7 +113,11 @@ public:
                              wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
                              int align = wxDVR_DEFAULT_ALIGNMENT);
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewBitmapRenderer);
@@ -174,11 +181,15 @@ public:
                                wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
                                int align = wxDVR_DEFAULT_ALIGNMENT);
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
 
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
-                                  unsigned col);
+                                  unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewIconTextRenderer);
@@ -198,11 +209,15 @@ public:
                              wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
                              int align = wxDVR_DEFAULT_ALIGNMENT);
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
 
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
-                                  unsigned col);
+                                  unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewToggleRenderer);
@@ -222,11 +237,14 @@ public:
                                wxDataViewCellMode mode = wxDATAVIEW_CELL_INERT,
                                int align = wxDVR_DEFAULT_ALIGNMENT);
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
 
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
-                                  unsigned col);
+                                  unsigned col) wxOVERRIDE;
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewProgressRenderer);
@@ -245,11 +263,15 @@ public:
                            wxDataViewCellMode mode = wxDATAVIEW_CELL_ACTIVATABLE,
                            int align = wxDVR_DEFAULT_ALIGNMENT);
 
-    virtual bool MacRender();
+    virtual bool MacRender() wxOVERRIDE;
 
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
-                                  unsigned col);
+                                  unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 
 private:
     wxDECLARE_DYNAMIC_CLASS_NO_COPY(wxDataViewDateRenderer);

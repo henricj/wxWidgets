@@ -138,22 +138,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='DLL Debug|Win32'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='DLL Debug|x64'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='DLL Release|Win32'">$(wxOutDir)</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='DLL Release|x64'">$(wxOutDir)</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='DLL Debug|Win32'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='DLL Debug|x64'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='DLL Release|Win32'">$(wxIntRootDir)$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='DLL Release|x64'">$(wxIntRootDir)$(ProjectName)\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(wxToolkitLibNamePrefix)$(ProjectName)</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(wxToolkitLibNamePrefix)$(ProjectName)</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(wxToolkitLibNamePrefix)$(ProjectName)</TargetName>
@@ -179,6 +163,11 @@
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='DLL Release|x64'">true</GenerateManifest>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='DLL Release|ARM64'">true</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL Debug|ARM64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DLL Release|ARM64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
       <PreprocessorDefinitions>WIN32;_LIB;_DEBUG;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;WXBUILDING;__WX__;SCI_LEXER;NO_CXX11_REGEX;LINK_LEXERS;%(PreprocessorDefinitions)</PreprocessorDefinitions>

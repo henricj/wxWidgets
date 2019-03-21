@@ -72,6 +72,10 @@
     <wxBaseDllNamePrefix>wxbase$(wxVersionString)$(wxSuffix)</wxBaseDllNamePrefix>
     <wxBaseLibNamePrefix>wxbase$(wxShortVersionString)$(wxSuffix)</wxBaseLibNamePrefix>
   </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(wxOutDir)</OutDir>
+    <IntDir>$(wxIntRootDir)$(ProjectName)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalOptions Condition="'$(PlatformToolset)' == 'v140_xp'">/Zc:threadSafeInit- %(AdditionalOptions)</AdditionalOptions>

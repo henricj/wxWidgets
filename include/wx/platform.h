@@ -54,12 +54,15 @@
 #       define MAC_OS_X_VERSION_10_15 101500
 #    endif
 #    if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_13
+/*
+ * Using "ifndef" to detect "const NSAppKitVersion" doesn't work.
 #        ifndef NSAppKitVersionNumber10_10
 #            define NSAppKitVersionNumber10_10 1343
 #        endif
 #        ifndef NSAppKitVersionNumber10_11
 #            define NSAppKitVersionNumber10_11 1404
 #        endif
+*/
 #    endif
 #    ifndef __WXOSX__
 #        define __WXOSX__ 1
@@ -502,12 +505,15 @@
 #           define MAC_OS_X_VERSION_10_14 101400
 #        endif
 #        if MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_13
+/*
+ * Using "ifndef" to detect "const NSAppKitVersion" doesn't work.
 #            ifndef NSAppKitVersionNumber10_10
 #                define NSAppKitVersionNumber10_10 1343
 #            endif
 #            ifndef NSAppKitVersionNumber10_11
 #                define NSAppKitVersionNumber10_11 1404
 #            endif
+*/
 #        endif
 #    else
 #        error "only mach-o configurations are supported"

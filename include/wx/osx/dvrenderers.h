@@ -144,6 +144,10 @@ public:
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
 
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
+
 private:
     wxArrayString m_choices;
 
@@ -167,6 +171,10 @@ public:
     virtual void OSXOnCellChanged(NSObject *value,
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
+
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 };
 
 // ---------------------------------------------------------
@@ -255,6 +263,9 @@ public:
                                   const wxDataViewItem& item,
                                   unsigned col) wxOVERRIDE;
 
+#if wxUSE_ACCESSIBILITY
+   virtual wxString GetAccessibleDescription() const wxOVERRIDE { return {}; }
+#endif // wxUSE_ACCESSIBILITY
 private:
     void DoInitButtonCell(int buttonType);
 

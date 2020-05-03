@@ -1097,16 +1097,6 @@ BOOL wxOSX_performDragOperation( id self, SEL _cmd, id <NSDraggingInfo> sender )
 }
 
 namespace {
-   // Return an autoreleased NSString
-   inline NSString* wxNSStringWithWxString(const wxString &wxstring)
-   {
-#if wxUSE_UNICODE
-      return [NSString stringWithUTF8String: wxstring.utf8_str()];
-#else
-      return [NSString stringWithCString: wxstring.c_str() length:wxstring.Len()];
-#endif // wxUSE_UNICODE
-   }
-   
    wxAccessible *findAccessible( id view )
    {
       wxWidgetCocoaImpl* impl;
@@ -1324,7 +1314,7 @@ namespace {
       {
          wxString result;
          if (wxACC_OK == (accessible.*pmf)(childID, &result))
-            return wxNSStringWithWxString(result);
+            return (id) wxNSStringWithWxString(result);
          else
             return @"";
       }

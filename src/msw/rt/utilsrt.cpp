@@ -168,6 +168,8 @@ int RTCore::ms_isAvailable = -1;
 
 const TempStringRef TempStringRef::Make(const wxString &str)
 {
+    // Until C++ 17, a copy or move ctor is needed for this
+    // return to work.
     return TempStringRef(str);
 }
 

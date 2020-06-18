@@ -70,6 +70,7 @@ public:
 
 private:
     TempStringRef(const wxString &str);
+    TempStringRef(TempStringRef&&) = default;
 
     HSTRING             m_hstring;
     HSTRING_HEADER      m_header;

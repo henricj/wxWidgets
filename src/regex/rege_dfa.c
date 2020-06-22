@@ -304,7 +304,10 @@ struct smalldfa *small;		/* preallocated space, may be NULL */
 		d->ssets = (struct sset *)MALLOC(nss * sizeof(struct sset));
 		d->statesarea = (unsigned *)MALLOC((nss+WORK) * wordsper *
 							sizeof(unsigned));
-		d->work = &d->statesarea[nss * wordsper];
+		if (d->statesarea)
+			d->work = &d->statesarea[nss * wordsper];
+		else
+			d->work = NULL;
 		d->outsarea = (struct sset **)MALLOC(nss * cnfa->ncolors *
 							sizeof(struct sset *));
 		d->incarea = (struct arcp *)MALLOC(nss * cnfa->ncolors *

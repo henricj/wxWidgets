@@ -125,7 +125,7 @@
     #if defined(__GNUC__) || \
           defined(__VISUALC__) || \
           defined(__FUNCTION__)
-        #define __WXFUNCTION__ __FUNCTION__
+        #define __WXFUNCTION__ ((const char *)__FUNCTION__)
     #else
         /* still define __WXFUNCTION__ to avoid #ifdefs elsewhere */
         #define __WXFUNCTION__ (NULL)
